@@ -1,0 +1,377 @@
+.dynamic-form {
+  &.dynamic-form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .form-item {
+    display: flex;
+    margin: 22px 0;
+    flex-wrap: wrap;
+
+    .form-label {
+      margin-right: 10px;
+      line-height: 32px;
+      &.form-label-group {
+        font-weight:600;
+      }
+      i {
+        transition: .5s;
+        cursor: pointer;
+      }
+
+      &.close {
+        i {
+          transform: rotate(-180deg);
+          transform-origin: 50% 50%;
+        }
+      }
+
+    }
+
+    .dynamic-form-group-list {
+      flex: 1;
+
+      .dynamic-form-group {
+        border-top: 1px solid @color-input;
+      }
+    }
+
+    .dynamic-form-group {
+      flex: 1;
+
+      i {
+        cursor: pointer;
+      }
+    }
+
+    .form-control {
+      flex: 1;
+      position: relative;
+      line-height:32px;
+      width: 100%;
+    }
+  }
+
+  &.form-label-left {
+    .form-item>.form-label {
+      text-align: left
+    }
+  }
+
+  &.form-label-right {
+    &>.form-item>.form-label {
+      text-align: right
+    }
+  }
+
+  &.form-label-top {
+    &>.form-item>.form-label {
+      flex-basis: 100%;
+    }
+
+    &>.form-item .dynamic-form-group {
+      width: 100%
+    }
+  }
+
+  .form-item-required {
+    .form-label:before {
+      content: "*";
+      display: inline-block;
+      margin-right: 4px;
+      line-height: 1;
+      font-family: SimSun;
+      font-size: 12px;
+      color: #ed4014;
+    }
+  }
+
+  .form-item-tip {
+    color: #f6ca9d;
+    line-height: 1.5;
+  }
+
+  .form-error-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    line-height: 1;
+    padding-top: 6px;
+    color: #ed4014;
+  }
+  .ivu-upload-list {
+    margin-top:0;
+  }
+  .upload-drag {
+    text-align: center;
+    border: 1px dashed rgb(60, 60, 60);
+    padding: 10px
+  }
+  .ivu-date-picker {
+    width:100%;
+  }
+  .btn-dark {
+    display: inline-block;
+    padding: 0 10px;
+    border: 1px solid #3c3c3c;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    color: inherit;
+    outline: none;
+    & + .btn-dark {
+      margin-left: 10px;
+    }
+    &:active {
+      box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.dynamic-form-dark {
+  color:#adadad;
+  .ivu-input[disabled],
+  fieldset[disabled] .ivu-input {
+    background-color: @color-input;
+    color: @color-placeholder;
+
+    &:hover {
+      border-color: #3c3c3c;
+    }
+
+    ;
+
+    &:focus {
+      border-color: #3c3c3c;
+    }
+  }
+
+  .ivu-input {
+    border-radius: 0;
+    color: #fff;
+    background: #3c3c3c;
+    border-color: #3c3c3c;
+
+    &:hover {
+      border-color: #57a3f3;
+    }
+
+    ;
+
+    &:focus {
+      border-color: #57a3f3;
+    }
+  }
+
+  .ivu-input-number {
+    background-color: @color-input;
+    border-color: @color-input;
+    color: #fff;
+
+    input {
+      background-color: @color-input;
+      color: #fff;
+    }
+
+    &:hover {
+      border-color: #57a3f3;
+    }
+  }
+
+  .ivu-select-selection {
+    background-color: @color-input;
+    border-color: @color-input;
+
+    &:hover {
+      border-color: #57a3f3;
+    }
+  }
+  .ivu-select-dropdown {
+    background-color: #333;
+  }
+  .ivu-select-item {
+    color: #868686;
+    &.ivu-select-item-selected {
+      color: #2d8cf0;
+      background: #4c4c4c;
+    }
+
+    &:hover {
+      background: #4c4c4c;
+    }
+  }
+
+  .ivu-select-visible .ivu-select-selection {
+    border-color: #57a3f3;
+  }
+
+  .ivu-select-single,
+  .ivu-select-multiple {
+    .ivu-select-selection {
+      .ivu-select-placeholder {
+        color: @color-placeholder;
+      }
+
+      .ivu-select-selected-value {
+        color: #fff;
+      }
+    }
+  }
+
+  .ivu-radio-group-button .ivu-radio-wrapper {
+    background-color: @color-input;
+    border-color: @color-input;
+    color: @color-placeholder;
+
+    &.ivu-radio-wrapper-checked,
+    &.ivu-radio-wrapper-checked:before {
+      border-color: #2d8cf0;
+      color: #2d8cf0;
+      box-shadow: -1px 0 0 0 #2d8cf0;
+    }
+  }
+
+  .ivu-radio-group-button .ivu-radio-wrapper:after,
+  .ivu-radio-group-button .ivu-radio-wrapper:before {
+    background: #4c4c4c;
+  }
+
+  .text-radio .ivu-radio-wrapper {
+    width: auto;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding-left: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: none;
+    text-align: center;
+  }
+
+  .ivu-cascader .ivu-cascader-menu-item {
+    color: #868686;
+  }
+
+  .ivu-cascader-visible .ivu-input {
+    border-color: #57a3f3;
+  }
+
+  .ivu-cascader-menu {
+    border-color: #4c4c4c;
+
+    .ivu-cascader-menu-item:hover,
+    .ivu-cascader-menu-item-active {
+      background: #4c4c4c;
+    }
+  }
+
+  .ivu-switch {
+    background-color: @color-input;
+    border-color: @color-input;
+  }
+
+  .ivu-switch-checked {
+    border-color: #2d8cf0;
+    background-color: #2d8cf0;
+  }
+
+  .ivu-slider-wrap {
+    background-color: @color-input;
+  }
+
+  .ivu-checkbox-inner {
+    background-color: @color-input;
+    border-color: @color-input;
+  }
+
+  .ivu-checkbox-checked .ivu-checkbox-inner {
+    border-color: #2d8cf0;
+    background-color: #2d8cf0;
+  }
+}
+
+// 弹出层的transfer
+.ivu-date-picker-transfer {
+  color: #adadad;
+  background-color: @color-input;
+}
+
+.ivu-cascader-transfer {
+  .ivu-cascader-menu-item {
+    color: #868686;
+  }
+
+  .ivu-cascader-menu {
+    border-color: #4c4c4c;
+
+    .ivu-cascader-menu-item:hover,
+    .ivu-cascader-menu-item-active {
+      background: #4c4c4c;
+    }
+  }
+}
+
+.ivu-select-dropdown-transfer {
+  .ivu-select-item {
+    color: #868686;
+
+    &.ivu-select-item-selected {
+      color: #2d8cf0;
+      background: #4c4c4c;
+    }
+
+    &:hover {
+      background: #4c4c4c;
+    }
+  }
+}
+
+.field-status-unvalid {
+
+  .ivu-input,
+  .ivu-input:hover,
+  .ivu-input:focus {
+    border-color: #ed4014;
+  }
+
+  .ivu-input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(237, 64, 20, .2);
+  }
+}
+
+.ivu-input-number,
+.ivu-input-number:hover,
+.ivu-input-number:focus,
+.ivu-input-number-focused {
+  &.field-status-unvalid {
+    border-color: #ed4014;
+  }
+}
+
+.ivu-input-number:focus,
+.ivu-input-number-focused {
+  &.field-status-unvalid {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(237, 64, 20, 0.2);
+  }
+}
+
+.field-status-unvalid {
+
+  .ivu-select-selection,
+  .ivu-select-selection-focused,
+  .ivu-select-selection:hover {
+    border-color: #ed4014;
+  }
+}
+
+.field-status-unvalid .CodeMirror-wrap {
+  border: 1px solid #ed4014;
+}
+
+.form-control .CodeMirror-wrap {
+  height: auto;
+}

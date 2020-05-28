@@ -1,13 +1,29 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <dynamic-form  v-model="formData" :model="formModel"/>
     </div>
-    <router-view/>
   </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      formData: {},
+      formModel: {
+        fields: [
+          {
+            type: 'string',
+            name: 'ceshi',
+            code: 'cc'
+          }
+        ]
 
+      }
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -1,15 +1,23 @@
 {
-  "name": "dd_car_management",
+  "name": "vue-dynamic-form-iview",
   "version": "0.1.0",
-  "private": true,
+  "files": [
+    "dist",
+    "package"
+  ],
+  "style": "dist/vue-dynamic-form.css",
+  "main": "dist/vue-dynamic-form.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vue-dynamic-form src/components/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "view-design": "^4.2.0",
     "vue": "^2.6.11",
+    "vue-dynamic-form-iview": "^0.1.0",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
@@ -24,6 +32,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
+    "less": "^3.11.1",
+    "less-loader": "^6.1.0",
     "vue-template-compiler": "^2.6.11"
   }
 }
