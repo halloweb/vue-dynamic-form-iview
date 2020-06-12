@@ -1,6 +1,7 @@
 {
   "name": "vue-dynamic-form-iview",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "description": "基于iview的通过json配置动态生成表单和对应的数据结构",
   "files": [
     "dist",
     "package"
@@ -33,7 +34,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.11.1",
-    "less-loader": "^6.1.0",
+    "less-loader": "^6.1.1",
     "vue-template-compiler": "^2.6.11"
   }
 }

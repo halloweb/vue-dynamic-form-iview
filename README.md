@@ -1,29 +1,56 @@
-# dd_car_management
-
-## Project setup
+[github](https://github.com/halloweb/vue-dynamic-form-iview)
+## type
 ```
-npm install
+  string,
+  number,
+  text
+  percent,
+  select,
+  radioGroup,
+  checkbox,
+  checkList
+  switch
+  date,
+  time,
+  selectStep,
+  color,
+  stringList,
+  keyValue,
+  list,
+  dragValue
 ```
-
-### Compiles and hot-reloads for development
+## example
+```javascript
+ <dynamic-form
+        v-model="formData"
+        :model="formModel"
+        ref="form"
+      ></dynamic-form>
+ export default {
+   data() {
+     return {
+        formData: {},
+      formModel: {
+        fields: [
+          {
+            code: 'emp',
+            type: 'select',
+            name: '评价人',
+            dataList: [],
+            attrs: { filterable: true, placeholder: '请选择评价人' },
+            rules: [{ required: true }]
+          },
+          {
+            code: 'appraisal_objs',
+            type: 'select',
+            name: '评价对象',
+            dataList: [],
+            attrs: { filterable: true, multiple: true, placeholder: '请选择被评价人或组织' },
+            rules: [{ required: true }]
+          }
+        ]
+      }
+     }
+   }
+ }
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

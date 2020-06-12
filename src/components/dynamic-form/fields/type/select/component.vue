@@ -48,7 +48,7 @@ export default {
         if (v) {
           this.val = v
           if (!this.model.dataList.find(item => item.value === v)) {
-             this.optionList = [{ value: v, name: v }, ...this.model.dataList]
+            this.optionList = [{ value: v, name: v }, ...this.model.dataList]
           }
         }
       }
@@ -69,8 +69,10 @@ export default {
   },
   methods: {
     handleCreate (val) {
-      this.$emit('on-create', val)
-      this.optionList = [{ value: val, name: val }, ...this.model.dataList]
+      if (this.$attrs && this.$attrs.allowCreate) {
+        this.$emit('on-create', val)
+        this.optionList = [{ value: val, name: val }, ...this.model.dataList]
+      }
     }
   }
 }
