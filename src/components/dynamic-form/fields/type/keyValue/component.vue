@@ -40,9 +40,9 @@ export default {
       this.val = { ...this.val, '': '' }
     },
     setKey (newKey, key, index) {
-      let keys = Object.keys(this.val)
+      const keys = Object.keys(this.val)
       if (!keys.includes(newKey)) keys[index] = newKey
-      let newVal = {}
+      const newVal = {}
       keys.forEach(v => {
         newVal[v] = this.val[v] === undefined ? this.val[key] : this.val[v]
       })
@@ -50,7 +50,7 @@ export default {
       this.updateVal()
     },
     updateVal () {
-      let validVal = {}
+      const validVal = {}
       Object.keys(this.val).forEach(v => {
         if (v) validVal[v] = this.val[v]
       })

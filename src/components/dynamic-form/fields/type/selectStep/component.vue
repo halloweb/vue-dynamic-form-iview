@@ -1,5 +1,5 @@
 <template>
-  <Cascader v-bind="model.attrs" :data="model.dataList" v-model="val" @on-change="changeValidator"></Cascader>
+  <Cascader v-bind="model.attrs" :data="model.dataList" v-on="model.listeners || {}" v-model="val" @on-change="changeValidator"></Cascader>
 </template>
 <script>
 import validate from '../validate.js'

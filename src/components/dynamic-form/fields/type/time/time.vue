@@ -1,5 +1,5 @@
 <template>
-  <TimePicker v-bind="model.attrs"  :value="value" @on-change="handleChange"></TimePicker>
+  <TimePicker v-bind="model.attrs" v-on="model.listeners || {}"  :value="value" @on-change="handleChange"></TimePicker>
 </template>
 <script>
 import validate from '../validate.js'

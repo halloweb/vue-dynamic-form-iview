@@ -3,6 +3,7 @@
     v-model="val"
     :class="fieldClass"
     v-bind="{...model.attrs,...$attrs}"
+    v-on="model.listeners || {}"
     @on-change="changeValidator"
     @on-create="handleCreate"
   >

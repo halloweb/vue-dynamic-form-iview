@@ -122,19 +122,19 @@ export default {
   },
   methods: {
     wrapStyle () {
-      let sum = this.model.fields.reduce((t, v) => {
-         t += (v.width || 0)
-         return t
+      const sum = this.model.fields.reduce((t, v) => {
+        t += (v.width || 0)
+        return t
       }, 0)
-      let width = sum < (this.model.fields.length + 1) * 80 ? (this.model.fields.length + 1) * 80 : sum
-      let sumWidth = this.colWidth.reduce((t, v) => {
+      const width = sum < (this.model.fields.length + 1) * 80 ? (this.model.fields.length + 1) * 80 : sum
+      const sumWidth = this.colWidth.reduce((t, v) => {
         t += v
         return t
       }, 0)
       return { minWidth: (sumWidth + 50) > width ? sumWidth + 50 : width + 'px' }
     },
     add () {
-      let item = this.model.fields.reduce((t, v) => {
+      const item = this.model.fields.reduce((t, v) => {
         t[v.code] = v.type === 'number' ? 0 : undefined
         return t
       }, {})
@@ -175,7 +175,7 @@ export default {
         return
       }
       this.checkAllGroup.forEach(v => {
-        let index = this.value.findIndex(item => item === v)
+        const index = this.value.findIndex(item => item === v)
         this.value.splice(index, 1)
       })
       this.checkAllGroup = []
@@ -186,15 +186,15 @@ export default {
         this.$Message.error('请先选择数据')
         return
       }
-      let valiatorArr = []
+      const valiatorArr = []
       this.checkAllGroup.forEach(v => {
-        let index = this.value.findIndex(item => item === v)
+        const index = this.value.findIndex(item => item === v)
         valiatorArr.push(this.$refs.tr[index].validate())
       })
       this.validate(valiatorArr)
     },
     validate () {
-      let valiatorArr = this.value.length ? this.$refs.tr.map(v => v.validate()) : []
+      const valiatorArr = this.value.length ? this.$refs.tr.map(v => v.validate()) : []
       return Promise.all(valiatorArr).then(res => {
         this.valid = true
         this.errorMessage = null
@@ -214,14 +214,14 @@ export default {
       })
     },
     fieldStatusChange ({ code, status, value }) {
-       if (status === 'errorMessage' && value) {
-         this.fieldStatus[code] = value
-         this.errorMessage = value
-       } else if (status === 'valid' && true) {
-         if (this.errorMessage === this.fieldStatus[code]) {
-           this.errorMessage = this.fieldStatus[code] = ''
-         }
-       }
+      if (status === 'errorMessage' && value) {
+        this.fieldStatus[code] = value
+        this.errorMessage = value
+      } else if (status === 'valid' && true) {
+        if (this.errorMessage === this.fieldStatus[code]) {
+          this.errorMessage = this.fieldStatus[code] = ''
+        }
+      }
     }
   },
   mounted () {

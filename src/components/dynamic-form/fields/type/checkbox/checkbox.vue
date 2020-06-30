@@ -6,6 +6,7 @@
     </template>
     <template v-else>
       <CheckboxGroup v-model="val"
+                     v-on="model.listeners || {}"
                      v-bind="model.attrs">
         <Checkbox v-for="(item,index) in model.dataList"
                   v-bind="item.attrs"

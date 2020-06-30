@@ -1,6 +1,6 @@
 <template>
     <span v-if="model.attrs && model.attrs.disabled">{{selected ? selected['name'] : value}}</span>
-    <RadioGroup v-else v-model="val" v-bind="model.attrs">
+    <RadioGroup v-else v-model="val" v-on="model.listeners || {}" v-bind="model.attrs">
       <Radio v-for="(item,index) in model.dataList" v-bind="item.attrs" :key="index" :label=" typeof item.value === 'boolean'? item.value.toString():item.value">{{item.name}}</Radio>
     </RadioGroup>
 </template>

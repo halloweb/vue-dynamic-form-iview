@@ -2,6 +2,7 @@
   <InputNumber v-model="val"
                :class="fieldClass"
                v-bind="model.attrs"
+               v-on="model.listeners || {}"
                @on-blur="blurValidator"
                @on-change="changeValidator"></InputNumber>
 </template>

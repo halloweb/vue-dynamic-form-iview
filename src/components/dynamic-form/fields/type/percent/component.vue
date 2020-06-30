@@ -3,6 +3,7 @@
     <Slider
       v-model="val"
       v-bind="model.attrs"
+      v-on="model.listeners || {}"
       @on-change="changeValidator"
     ></Slider>
   </div>

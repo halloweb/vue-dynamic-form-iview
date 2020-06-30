@@ -44,8 +44,8 @@ export default {
   },
   computed: {
     fieldMap () {
-      let map = {}
-      for (let field of this.model.fields || []) {
+      const map = {}
+      for (const field of this.model.fields || []) {
         map[field.code] = field
       }
       return map
@@ -59,15 +59,15 @@ export default {
           this.$emit('input', {})
         } else {
           this.$nextTick(() => {
-          this.getTdWidth()
-        })
+            this.getTdWidth()
+          })
         }
       }
     }
   },
   methods: {
     fieldControl (field) {
-      let type = field.type || 'string'
+      const type = field.type || 'string'
       if (Field[type]) return Field[type].component
       else console.warn(`没有${type}类型的表单控件,请换一个类型或检查type是否拼写错误`)
     },
@@ -77,25 +77,25 @@ export default {
           .filter(field => field.validate)
           .map(field => field.validate())
       ).then(res => {
-            this.valid = true
-            this.errorMessage = null
-            res.forEach(({ valid, message }) => {
-              if (!valid) {
-                this.valid = false
-                if (message && !this.errorMessage) {
-                  this.errorMessage = message
-                }
-              }
-            })
-            return {
-              valid: this.valid,
-              message: this.errorMessage,
-              data: this.value
+        this.valid = true
+        this.errorMessage = null
+        res.forEach(({ valid, message }) => {
+          if (!valid) {
+            this.valid = false
+            if (message && !this.errorMessage) {
+              this.errorMessage = message
             }
-          })
+          }
+        })
+        return {
+          valid: this.valid,
+          message: this.errorMessage,
+          data: this.value
+        }
+      })
     },
     inputValue (code, value) {
-      let oldValue = this.value[code]
+      const oldValue = this.value[code]
       this.$emit('fieldInput', {
         code,
         value,
@@ -106,7 +106,7 @@ export default {
     },
     setValue (code, value) {
       if (code) {
-        let oldValue = this.value[code]
+        const oldValue = this.value[code]
         if (value !== oldValue) {
           this.$set(this.value, code, value)
           this.$emit('fieldChange', {
@@ -116,7 +116,7 @@ export default {
           })
         }
       } else if (code === undefined) {
-        let oldValue = this.value
+        const oldValue = this.value
         if (value !== oldValue) {
           this.$emit('input', value)
         }
@@ -127,7 +127,7 @@ export default {
         this.initFiedStatus(code)
       }
       this.$set(this.fieldStatus[code], statusCode, value)
-      if (statusCode === 'errorMessage' && !this.fieldStatus[code]['valid']) {
+      if (statusCode === 'errorMessage' && !this.fieldStatus[code].valid) {
         this.errorMessage = value
       }
       this.$emit('fieldStatusChange', {
@@ -137,7 +137,7 @@ export default {
       })
     },
     initFiedStatus (code) {
-      let field = this.fieldMap[code]
+      const field = this.fieldMap[code]
       let status = {}
       if (field) {
         status = {
@@ -158,10 +158,10 @@ export default {
       this.$set(this.fieldStatus, code, status)
     },
     setData (value = {}) {
-      for (let code in value) {
+      for (const code in value) {
         this.setValue(code, value[code])
       }
-      for (let code in this.value) {
+      for (const code in this.value) {
         if (value[code] === undefined) {
           this.setValue(code, null)
           delete this.value[code]
@@ -178,7 +178,7 @@ export default {
     },
     getTdWidth () {
       this.$refs.td && this.$refs.td.forEach((v, index) => {
-          if (v.offsetWidth) this.tdWidth[index] = v.offsetWidth
+        if (v.offsetWidth) this.tdWidth[index] = v.offsetWidth
       })
       this.tdWidth.length && this.mergeWidth(this.tdWidth)
     },

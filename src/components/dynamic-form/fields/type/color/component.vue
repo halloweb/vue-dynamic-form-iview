@@ -2,6 +2,7 @@
  <ColorPicker v-model="val"
    :class="fieldClass"
     v-bind="model.attrs"
+    v-on="model.listeners || {}"
     @on-change="changeValidator"/>
 </template>
 <script>

@@ -8,6 +8,7 @@ class RuleValidator {
     phone: /^1[3456789]\d{9}$/,
     email: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
   }
+
   constructor (rules, vm) {
     this.vm = vm
     this.rules = rules
@@ -19,21 +20,26 @@ class RuleValidator {
       v.trigger === 'change' && this.changeRules.push(v)
     })
   }
+
   static empty (value) {
     return value === '' || value === null || value === undefined || (Array.isArray(value) && value.length === 0)
   }
+
   commonValidator (value, model) {
     if (this.rules.length === 0) return
     this.validator(value, this.rules, model)
   }
+
   blurValidator (value) {
     if (this.blurRules.length === 0) return
     this.validator(value, this.blurRules)
   }
+
   changeValidator (value) {
     if (this.changeRules.length === 0) return
     this.validator(value, this.changeRules)
   }
+
   validator (value, rules, model) {
     rules.forEach(v => {
       if (v.required) {
@@ -42,7 +48,7 @@ class RuleValidator {
       // 如果值为空下面几个规则不作校验
       if (RuleValidator.empty(value)) return
       if (v.type === 'range') {
-        let size = typeof value === 'number' ? value : value.length
+        const size = typeof value === 'number' ? value : value.length
         if (v.max && size > v.max) throw new Error(`${v.message || ''}`)
         if (v.min && size < v.min) throw new Error(`${v.message || ''}`)
         return
@@ -53,13 +59,13 @@ class RuleValidator {
         return
       }
       if (v.pattern) {
-        let reg = Object.prototype.toString.call(v.pattern).includes('RegExp') ? v.pattern : new RegExp(v.pattern)
+        const reg = Object.prototype.toString.call(v.pattern).includes('RegExp') ? v.pattern : new RegExp(v.pattern)
         if (!reg.test(value)) throw new Error(`${v.message || ''}`)
         return
       }
       if (v.validator) {
         if (typeof v.validator !== 'function') return
-        let callback = function (res) {
+        const callback = function (res) {
           if (Object.prototype.toString.call(res).includes('Error')) throw new Error(`${res.message || v.message || ''}`)
         }
         /**
@@ -68,7 +74,7 @@ class RuleValidator {
          * rule:本条校验规则对象、callback:回调函数
          * callback(new Error('错误信息'))
          */
-        let obj = { formData: this.vm.form.value, vm: this.vm, value: value, rule: v, callback: callback }
+        const obj = { formData: this.vm.form.value, vm: this.vm, value: value, rule: v, callback: callback }
         v.validator(obj)
       }
     })
@@ -143,8 +149,8 @@ export default {
       }
     },
     reset () {
-      let dictionary = { Number: null, String: '', Boolean: null, Array: [], Undefined: undefined, Null: null }
-      let type = Object.prototype.toString.call(this.form.value[this.model.code])
+      const dictionary = { Number: null, String: '', Boolean: null, Array: [], Undefined: undefined, Null: null }
+      const type = Object.prototype.toString.call(this.form.value[this.model.code])
       let value = dictionary[type.substring(8, type.length - 1)]
       if (this.model.default) value = this.model.default
       if (this.initVal !== undefined) value = this.initVal

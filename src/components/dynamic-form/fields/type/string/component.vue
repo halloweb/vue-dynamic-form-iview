@@ -3,7 +3,7 @@
     :class="fieldClass"
     :value="value"
     v-bind="model.attrs"
-    v-on="model.listeners"
+    v-on="model.listeners || {}"
     @input="input"
     @on-blur="blurValidator"
     :autosize="true"

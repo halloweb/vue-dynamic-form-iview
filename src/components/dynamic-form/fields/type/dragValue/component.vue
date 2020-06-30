@@ -63,16 +63,16 @@ export default {
       return {
         'field-status-unvalid': this.status && !this.status.valid,
         'drag-value': true,
-        'dragenter': this.dragenter
+        dragenter: this.dragenter
       }
     }
   },
   methods: {
     drop (e) {
       console.log(e)
-      let value = e.dataTransfer.getData('text')
+      const value = e.dataTransfer.getData('text')
       try {
-        let val = JSON.parse(value).key
+        const val = JSON.parse(value).key
         val && this.form.inputValue(this.code, val)
       } catch (error) {
         console.log(error)

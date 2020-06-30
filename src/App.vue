@@ -6,7 +6,11 @@
   </div>
 </template>
 <script>
+import DynamicForm from '@/components/dynamic-form'
 export default {
+  components: {
+    DynamicForm
+  },
   data () {
     return {
       formData: {},
@@ -16,10 +20,30 @@ export default {
             type: 'string',
             name: 'ceshi',
             code: 'cc'
+          },
+          {
+            type: 'select',
+            name: '选择框',
+            code: 'select',
+            dataList: [
+              { name: '11', value: '11' },
+              { name: '2', value: '2' }
+            ],
+            rules: [
+              { required: true }
+            ],
+            listeners: {
+              'on-change': this.handler
+            }
           }
         ]
 
       }
+    }
+  },
+  methods: {
+    handler (v) {
+      console.log(v)
     }
   }
 }

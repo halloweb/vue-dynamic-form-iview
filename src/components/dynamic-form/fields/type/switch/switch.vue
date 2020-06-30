@@ -1,5 +1,5 @@
 <template>
-  <i-switch v-model="val" />
+  <i-switch v-on="model.listeners || {}" v-model="val" />
 </template>
 <script>
 export default {

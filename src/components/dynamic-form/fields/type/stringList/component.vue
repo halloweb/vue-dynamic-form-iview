@@ -3,6 +3,7 @@
     :class="fieldClass"
     :value="val"
     v-bind="model.attrs"
+    v-on="model.listeners || {}"
     @input="input"
     @on-blur="blurValidator"
   />
@@ -48,7 +49,7 @@ export default {
   methods: {
     input (v) {
       if (v) {
-        let item = v.split(`${this.model.splitter || ','}`).filter(Boolean)
+        const item = v.split(`${this.model.splitter || ','}`).filter(Boolean)
         this.form.inputValue(this.code, item)
       } else {
         this.form.inputValue(this.code, [])
