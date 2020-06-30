@@ -1,6 +1,6 @@
 {
   "name": "vue-dynamic-form-iview",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "基于iview的通过json配置动态生成表单和对应的数据结构",
   "files": [
     "dist",
