@@ -25,6 +25,7 @@ export default {
             type: 'select',
             name: '选择框',
             code: 'select',
+            hide: false,
             dataList: [
               { name: '11', value: '11' },
               { name: '2', value: '2' }
@@ -35,6 +36,25 @@ export default {
             listeners: {
               'on-change': this.handler
             }
+          },
+          {
+            type: 'list',
+            code: 'rule',
+            name: '得分规则',
+            fields: [
+              {
+                code: 'rule_exp',
+                name: '条件(次数x)',
+                type: 'string',
+                attrs: { placeholder: '例0<=x<=5' }
+              },
+              {
+                code: 'score',
+                name: '分值',
+                type: 'number',
+                attrs: { min: 0 }
+              }
+            ]
           }
         ]
 

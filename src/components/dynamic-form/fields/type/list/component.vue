@@ -134,6 +134,10 @@ export default {
       return { minWidth: (sumWidth + 50) > width ? sumWidth + 50 : width + 'px' }
     },
     add () {
+      if (this.value.length >= (this.model.max || Infinity)) {
+        this.$Message.info(`最多只能设置${this.model.max}条数据`)
+        return
+      }
       const item = this.model.fields.reduce((t, v) => {
         t[v.code] = v.type === 'number' ? 0 : undefined
         return t

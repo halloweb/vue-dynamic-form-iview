@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
     <div
-      v-for="field of model.fields"
+      v-for="field of fields"
       :key="field.code"
       :class="fieldClass(field)"
       :style="formItemStyles(field.span)"
@@ -179,7 +179,7 @@ export default {
   computed: {
     fieldMap () {
       const map = {}
-      for (const field of this.model.fields || []) {
+      for (const field of this.fields || []) {
         map[field.code] = field
       }
       return map
@@ -201,6 +201,9 @@ export default {
         style.width = `${this.labelWidth || this.labelMaxWidth}px`
       }
       return style
+    },
+    fields () {
+      return this.model.fields.filter(v => !v.hide)
     }
   },
   watch: {
